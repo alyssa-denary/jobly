@@ -7,6 +7,8 @@ import SearchForm from "./SearchForm";
  *
  * State:
  * -companies :{isLoading, data, errors}
+ *      -data like: [{ handle, name, description, numEmployees, logoUrl},...]
+ *      
  * -filter: "anderson"
  *
  * Effect

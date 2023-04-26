@@ -14,6 +14,7 @@ import Homepage from './Homepage';
  */
 
 function RouteList() {
+
     return (
         <Routes>
             <Route
@@ -34,6 +35,11 @@ function RouteList() {
             <Route
                 path="/jobs"
                 element={<JobList/>}
+            />
+
+            <Route
+                path="/*"
+                element={<Navigate to="/"/>}
             />
         </Routes>
     );
