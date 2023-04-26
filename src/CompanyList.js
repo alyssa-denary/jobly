@@ -2,13 +2,24 @@
  * 
  * Props: none
  * 
- * State: none
+ * State: 
+ * -companies :{isLoading, data, errors}
+ * -filter: "anderson"
  * 
- * RouteList --> CompanyList
+ * Effect
+ * -fetchCompanies
+ * 
+ * RouteList --> CompanyList --> {SearchForm, CompanyCard}
 */
 
 function CompanyList() {
-    return null;
+    return (
+        <div className="CompanyList">
+            <SearchForm />
+            <CompanyCard />
+            <CompanyCard />
+        </div>
+    )
 }
 
 export default CompanyList;
