@@ -6,12 +6,12 @@
 * -jobs {isLoading, data, errors}
 * -filter  : "anderson"
 *
-* Effect
-* fetchJobs
+* Effect:
+* -fetchJobs
 * 
 *
-* JobsList --> SearchForm
-* JobsList --> Job
+* RouteList --> JobList --> { SearchForm , JobCardList }
+* 
 */
 
 function JobList() {

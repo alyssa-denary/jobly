@@ -6,15 +6,19 @@
 * -company
 
 * Effect 
-fetchCompanyOnMount 
-{ handle, name, description, numEmployees, logoUrl, jobs } 
+-fetchCompanyOnMount 
+    { handle, name, description, numEmployees, logoUrl, jobs } 
     where jobs is [{ id, title, salary, equity }, ...]
 *
-* RouteList --> Company
+* RouteList --> CompanyDetail --> JobCardList
 */
 
 function CompanyDetail() {
-    return null;
+    return (
+        <div className="CompanyDetail">
+            <JobCardList/>
+        </div>
+    )
 }
 
 export default CompanyDetail;
