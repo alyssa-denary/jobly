@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 
 /** CompanyCard
 *
 * Props
-* -company {name, description, logoURL]}
+* -company {name, handle, description, logoURL]}
 *
 * State none
 *
@@ -11,10 +12,13 @@
 * CompanyList --> CompanyCard
 */
 
-function CompanyCard({ company }){
-  return(
+function CompanyCard({ company }) {
+
+  const handle = "anderson";
+
+  return (
     <div className="CompanyCard">
-      <p>I'm a company card</p>
+      <Link to={`/companies/${handle}`}>I'm a company card</Link>
     </div>
   );
 }
