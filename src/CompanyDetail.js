@@ -21,7 +21,7 @@ function CompanyDetail() {
     return (
         <div className="CompanyDetail">
             <JobCardList jobs={fakeJobs}/>
-        </div>
+        </div> 
     )
 }
 
