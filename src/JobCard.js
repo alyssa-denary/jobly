@@ -13,7 +13,10 @@
 function JobCard({ job }){
   return (
     <div className="JobCard">
-      <p>I'm a job card</p>
+      <h4>Conservator, furniture</h4>
+      <p>Watson-Davis</p>
+      <small>salary: 110,000</small>
+      <small>Equity: 0</small>
     </div>
   );
 }
