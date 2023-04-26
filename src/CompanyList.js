@@ -16,11 +16,13 @@ import SearchForm from "./SearchForm";
 */
 
 function CompanyList() {
+  const fakeCompany = {id: "dlkj", handle: "anderson"};
+
     return (
       <div className="CompanyList">
         <SearchForm />
         {/* TODO: turn this into map over CompanyCard */}
-        <CompanyCard />
+        <CompanyCard company={fakeCompany}/>
       </div>
     );
 }
