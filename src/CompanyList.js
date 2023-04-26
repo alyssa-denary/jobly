@@ -27,6 +27,26 @@ function CompanyList() {
 
     const [companies, setCompanies] = useState(initialCompaniesData);
     const [filterText, setFilterText] = useState("");
+
+    useEffect(function fetchCompaniesOnFilterTextChange() {
+        async function fetchCompanies() {
+            try {
+            const companiesResult = await getCompanies(filterText);
+            setCompanies({
+                isLoading: false,
+                data: companiesResults,
+                errors: null
+            });
+            } catch (err) {
+                setCompanies({
+                    isLoading: false,
+                    data: null,
+                    errors: err
+                });
+            }
+        }   
+        fetchCompanies();
+    }, [filterText]);
     
     return (
       <div className="CompanyList">
