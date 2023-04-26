@@ -1,5 +1,5 @@
 /** JobList
-* 
+*
 * Props none
 *
 * State
@@ -8,14 +8,25 @@
 *
 * Effect:
 * -fetchJobs
-* 
+*
 *
 * RouteList --> JobList --> { SearchForm , JobCardList }
-* 
+*
 */
 
+import JobCardList from "./JobCardList";
+import SearchForm from "./SearchForm";
+
 function JobList() {
-    return null;
+
+  const fakeJobs = [{fakejob: null}];
+
+    return (
+      <div className="JobList">
+        <SearchForm />
+        <JobCardList jobs={fakeJobs} />
+      </div>
+    );
 }
 
 export default JobList;
