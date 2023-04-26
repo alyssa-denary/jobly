@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
 
@@ -8,8 +9,8 @@ import SearchForm from "./SearchForm";
  * State:
  * -companies :{isLoading, data, errors}
  *      -data like: [{ handle, name, description, numEmployees, logoUrl},...]
- *      
- * -filter: "anderson"
+ *
+ * -filterText: "anderson"
  *
  * Effect
  * -fetchCompanies
@@ -18,8 +19,15 @@ import SearchForm from "./SearchForm";
 */
 
 function CompanyList() {
-  const fakeCompany = {id: "dlkj", handle: "anderson"};
+  const initialCompaniesData = {
+    isLoading: true,
+    data: null,
+    errors: null
+  }
 
+    const [companies, setCompanies] = useState(initialCompaniesData);
+    const [filterText, setFilterText] = useState("");
+    
     return (
       <div className="CompanyList">
         <SearchForm />
