@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import CompanyCard from "./CompanyCard";
 import SearchForm from "./SearchForm";
+import JoblyApi from "./api.js";
+
 
 /**  CompanyList
  *
@@ -31,10 +33,10 @@ function CompanyList() {
     useEffect(function fetchCompaniesOnFilterTextChange() {
         async function fetchCompanies() {
             try {
-            const companiesResult = await getCompanies(filterText);
+            const companiesResult = await JoblyApi.getCompanies(filterText);
             setCompanies({
                 isLoading: false,
-                data: companiesResults,
+                data: companiesResult,
                 errors: null
             });
             } catch (err) {
@@ -44,15 +46,18 @@ function CompanyList() {
                     errors: err
                 });
             }
-        }   
+        }
         fetchCompanies();
     }, [filterText]);
-    
+
     return (
       <div className="CompanyList">
         <SearchForm />
-        {/* TODO: turn this into map over CompanyCard */}
-        <CompanyCard company={fakeCompany}/>
+        {companies.isLoading && <p>Loading...</p>}
+        {companies.errors !== null && <p>Not Found!</p>}
+        {companies.data !==null && companies.data.map((c) => (
+          <CompanyCard company={c}/>
+        ))}
       </div>
     );
 }
