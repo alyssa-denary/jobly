@@ -1,4 +1,4 @@
-
+import {useState} from "react";
 
 /** SearchForm
 *
@@ -6,16 +6,38 @@
 * -filter (callback function)
 *
 * State
-* -formData
+* -formData {searchText}
 *
 * {CompanyList,  JobList} --> SearchForm
 */
 
 function SearchForm(filter) {
+  const [formData, setFormData] = useState("");
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    filter(formData);
+  }
+
+  function handleChange(evt) {
+    const { name, value } = evt.target;
+    setFormData(curr => ({
+      ...curr,
+      [name]: value
+    }));
+  }
 
   return (
-    <form className="SearchForm">
-      <p>I'm a Search form</p>
+    <form className="SearchForm" onSubmit={handleSubmit}>
+      <label htmlFor="SearchForm-input"></label>
+      <input
+        id="SearchForm-input"
+        placeholder="Enter search term..."
+        name="searchText"
+        value={formData.searchText}
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
     </form>
   );
 }
