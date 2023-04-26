@@ -1,22 +1,26 @@
-/** CompanyDetail 
-* 
-* Props none
-* 
-* State 
-* -company
+import JobCardList from "./JobCardList";
 
-* Effect 
--fetchCompanyOnMount 
-    { handle, name, description, numEmployees, logoUrl, jobs } 
-    where jobs is [{ id, title, salary, equity }, ...]
+/** CompanyDetail
+*
+* Props none
+*
+* State
+* -company
+* Effect
+* -fetchCompanyOnMount
+*   { handle, name, description, numEmployees, logoUrl, jobs }
+*   where jobs is [{ id, title, salary, equity }, ...]
 *
 * RouteList --> CompanyDetail --> JobCardList
 */
 
 function CompanyDetail() {
+
+  const fakeJobs = [{fakejob: null}];
+
     return (
         <div className="CompanyDetail">
-            <JobCardList/>
+            <JobCardList jobs={fakeJobs}/>
         </div>
     )
 }
