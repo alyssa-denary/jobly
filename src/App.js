@@ -1,6 +1,6 @@
 import './App.css';
 import RouteList from './RouteList';
-import NavBar from './NavBar';
+import Navigation from './Navigation';
 import { BrowserRouter } from 'react-router-dom';
 
 /** App
@@ -9,14 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
  *
  * props: none
  *
- * App --> { NavBar, RouteList }
+ * App --> { Navigation, RouteList }
  */
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <Navigation />
         <RouteList />
       </BrowserRouter>
     </div>

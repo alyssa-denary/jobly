@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import './NavBar.css';
+import './Navigation.css';
 
 /** Navigation Bar
  *
@@ -9,9 +9,9 @@ import './NavBar.css';
  *
  * App --> NavLink
  */
-function NavBar() {
+function Navigation() {
   return (
-    <nav className='NavBar navbar navbar-expand-md'>
+    <nav className='Navigation navbar navbar-expand-md'>
       <div className='container-fluid'>
         <NavLink to={'/'} className='navbar-brand'>
           Jobly
@@ -33,4 +33,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navigation;

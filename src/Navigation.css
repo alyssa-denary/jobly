@@ -1,9 +1,9 @@
-.NavBar {
+.Navigation {
   background-color: white;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
 
-.NavBar.active {
+.Navigation.active {
   font-weight: bold;
   color: black;
 }
