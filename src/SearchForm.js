@@ -11,7 +11,7 @@ import {useState} from "react";
 * {CompanyList,  JobList} --> SearchForm
 */
 
-function SearchForm(filter) {
+function SearchForm({filter}) {
   const [formData, setFormData] = useState("");
 
   function handleSubmit(evt) {
