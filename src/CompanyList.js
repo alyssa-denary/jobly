@@ -29,8 +29,8 @@ function CompanyList() {
 
     const [companies, setCompanies] = useState(initialCompaniesData);
     const [filterText, setFilterText] = useState("");
-    
-    /** Makes axios request to API to get companies that contain search 
+
+    /** Makes axios request to API to get companies that contain search
      * text.
      */
 
@@ -63,7 +63,7 @@ function CompanyList() {
     }
 
     return (
-      <div className="CompanyList"> 
+      <div className="CompanyList">
         <SearchForm filter={filter}/>
         {companies.isLoading && <p>Loading...</p>}
         {companies.errors !== null && <p>Not Found!</p>}

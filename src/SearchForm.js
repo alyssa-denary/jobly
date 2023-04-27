@@ -31,15 +31,18 @@ function SearchForm({filter}) {
 
   return (
     <form className="SearchForm" onSubmit={handleSubmit}>
+      <div className="form-group">
       <label htmlFor="SearchForm-input"></label>
       <input
         id="SearchForm-input"
+        className="form-control"
         placeholder="Enter search term..."
         name="searchText"
         value={formData.searchText}
         onChange={handleChange}
       />
-      <button type="submit">Submit</button>
+      </div>
+      <button className="btn btn-lg btn-primary" type="submit">Submit</button>
     </form>
   );
 }

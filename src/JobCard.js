@@ -1,3 +1,4 @@
+import "./JobCard.css";
 
 /** JobCard
  *
