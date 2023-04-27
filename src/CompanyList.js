@@ -29,6 +29,10 @@ function CompanyList() {
 
     const [companies, setCompanies] = useState(initialCompaniesData);
     const [filterText, setFilterText] = useState("");
+    
+    /** Makes axios request to API to get companies that contain search 
+     * text.
+     */
 
     useEffect(function fetchCompaniesOnFilterTextChange() {
         async function fetchCompanies() {
@@ -50,13 +54,21 @@ function CompanyList() {
         fetchCompanies();
     }, [filterText]);
 
+    /** Sets filterText on search bar submit if input has changed */
+
+    function filter(data) {
+        if (filterText !== data.searchText) {
+        setFilterText(data.searchText);
+        }
+    }
+
     return (
-      <div className="CompanyList">
-        <SearchForm />
+      <div className="CompanyList"> 
+        <SearchForm filter={filter}/>
         {companies.isLoading && <p>Loading...</p>}
         {companies.errors !== null && <p>Not Found!</p>}
         {companies.data !==null && companies.data.map((c) => (
-          <CompanyCard company={c}/>
+          <CompanyCard company={c} key={c.handle}/>
         ))}
       </div>
     );
