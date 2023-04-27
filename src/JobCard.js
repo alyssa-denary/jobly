@@ -13,10 +13,10 @@
 function JobCard({ job }){
   return (
     <div className="JobCard">
-      <h4>Conservator, furniture</h4>
-      <p>Watson-Davis</p>
-      <small>salary: 110,000</small>
-      <small>Equity: 0</small>
+      <h4>{job.title}</h4>
+      {job.companyName !== undefined && <p>{job.companyName}</p>}
+      {job.salary !== undefined && <p><small>Salary: {job.salary}</small></p>}
+      <p><small>Equity: {job?.equity || 0}</small></p>
     </div>
   );
 }
