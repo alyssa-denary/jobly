@@ -13,10 +13,12 @@ import { useState } from "react";
 
 function SearchForm({ filter }) {
   const [formData, setFormData] = useState({ searchText: "" });
+  // Also could use string directly here
 
   /** handleSubmit calls parent filter callback */
   function handleSubmit(evt) {
     evt.preventDefault();
+    // TODO: could clean up data here with trim() for empty entries
     filter(formData);
   }
 

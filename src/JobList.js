@@ -4,7 +4,7 @@
 *
 * State
 * -jobs {isLoading, data, errors}
-* -filter  : "anderson"
+* -filter  : "anderson" //TODO: update this to filterText
 *
 * Effect:
 * -fetchJobs
@@ -49,7 +49,7 @@ function JobList() {
   }, [filterText]);
 
   function filter(data) {
-    if (filterText !== data.searchText) {
+    if (filterText !== data.searchText) { // TODO: don't need this line
       setFilterText(data.searchText);
     }
   }

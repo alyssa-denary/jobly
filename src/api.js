@@ -49,6 +49,7 @@ class JoblyApi {
 
   static async getCompanies(filter) {
     let res;
+    // TODO: try passing undefined as filter
     if (filter.length > 0) {
       res = await this.request('companies/', { nameLike: filter });
     } else {

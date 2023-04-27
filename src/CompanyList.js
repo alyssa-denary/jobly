@@ -27,6 +27,7 @@ function CompanyList() {
     errors: null
   };
 
+  // TODO: update name to companiesAPIdata, companiesAndLoadingAndErrors
   const [companies, setCompanies] = useState(initialCompaniesData);
   const [filterText, setFilterText] = useState("");
 
@@ -51,13 +52,14 @@ function CompanyList() {
         });
       }
     }
+    // TODO: could set isLoading to true here
     fetchCompanies();
   }, [filterText]);
 
   /** Sets filterText on search bar submit if input has changed */
 
   function filter(data) {
-    if (filterText !== data.searchText) {
+    if (filterText !== data.searchText) { // TODO: don't need this line
       setFilterText(data.searchText);
     }
   }
@@ -66,6 +68,7 @@ function CompanyList() {
     <div className="CompanyList">
       <SearchForm filter={filter} />
       {companies.isLoading && <p>Loading...</p>}
+      {/* TODO: Add empty array to not found conditional */}
       {companies.errors !== null && <p>Not Found!</p>}
       {companies.data !== null && companies.data.map((c) => (
         <CompanyCard company={c} key={c.handle} />

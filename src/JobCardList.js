@@ -12,6 +12,7 @@ import JobCard from "./JobCard";
  * { JobsList, CompanyDetail } --> JobCardList --> JobCard
 */
 
+// TODO: destructure here instead of in jobCard
 function JobCardList({ jobs }) {
 
   return (

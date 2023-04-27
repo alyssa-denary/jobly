@@ -13,6 +13,7 @@ import "./CompanyCard.css";
 * CompanyList --> CompanyCard
 */
 
+// TODO: change destructuring to be in CompanyList when pass down props
 function CompanyCard({ company }) {
   const { name, handle, description, logoUrl } = company;
 
