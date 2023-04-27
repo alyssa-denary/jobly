@@ -4,7 +4,7 @@ import "./CompanyCard.css";
 /** CompanyCard
 *
 * Props
-* -company {name, handle, description, logoURL]}
+* -company {name, handle, description, logoUrl]}
 *
 * State none
 *
@@ -14,14 +14,12 @@ import "./CompanyCard.css";
 */
 
 function CompanyCard({ company }) {
-  const {name, handle, description, logo_url} = company;
-
-  console.log('logoURL: ' ,logo_url);
+  const {name, handle, description, logoUrl} = company;
 
   return (
     <div className="CompanyCard card card-body">
       <Link to={`/companies/${handle}`} className="card-title">
-        {logo_url && <img className="CompanyCard-logo" src={logo_url} alt={`${name}'s logo`}/>}
+        {logoUrl && <img className="CompanyCard-logo" src={logoUrl} alt={`${name}'s logo`}/>}
         <h4>{name}</h4>
         <p>{description}</p>
       </Link>
