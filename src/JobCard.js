@@ -13,8 +13,8 @@ import "./JobCard.css";
 
 function JobCard({ job }){
   return (
-    <div className="JobCard">
-      <h4>{job.title}</h4>
+    <div className="JobCard card card-body">
+      <h4 className="card-title">{job.title}</h4>
       {job.companyName !== undefined && <p>{job.companyName}</p>}
       {job.salary !== undefined && <p><small>Salary: {job.salary}</small></p>}
       <p><small>Equity: {job?.equity || 0}</small></p>
