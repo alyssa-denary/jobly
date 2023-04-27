@@ -14,11 +14,9 @@ import JobCard from "./JobCard";
 
 function JobCardList({ jobs }) {
 
-  const fakeJob = { fakejob: null };
   return (
     <div className="JobCardList">
-      {/* TODO: turn this into map over JobCard */}
-      <JobCard job={fakeJob} />
+      {jobs.map(j => <JobCard job={j} key={j.id} />)}
     </div>
   );
 }
