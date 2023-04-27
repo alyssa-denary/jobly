@@ -14,11 +14,13 @@ import {useState} from "react";
 function SearchForm({filter}) {
   const [formData, setFormData] = useState("");
 
+  /** handleSubmit calls parent filter callback */
   function handleSubmit(evt) {
     evt.preventDefault();
     filter(formData);
   }
 
+  /** updates formData state for that input */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(curr => ({
