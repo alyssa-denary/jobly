@@ -60,7 +60,12 @@ class JoblyApi {
   /** Get a list of jobs filtered by search bar input */
 
   static async getJobs(filter) {
-    let res = await this.request('jobs/', { title: filter });
+    let res;
+    if (filter.length > 0) {
+        res = await this.request('jobs/', { title: filter });
+      } else {
+        res = await this.request('jobs/');
+      }
     return res.jobs;
   }
 
