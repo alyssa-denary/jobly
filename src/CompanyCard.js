@@ -13,12 +13,14 @@ import { Link } from "react-router-dom";
 */
 
 function CompanyCard({ company }) {
-  const {name, handle, description, logoURL} = company;
+  const {name, handle, description, logo_url} = company;
+
+  console.log('logoURL: ' ,logo_url);
 
   return (
     <div className="CompanyCard">
       <Link to={`/companies/${handle}`}>
-        <img className="CompanyCard-logo" src={logoURL} alt={`${name}'s logo`}/>
+        {logo_url && <img className="CompanyCard-logo" src={logo_url} alt={`${name}'s logo`}/>}
         <h4>{name}</h4>
         <p>{description}</p>
       </Link>
