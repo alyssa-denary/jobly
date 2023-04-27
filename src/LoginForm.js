@@ -1,18 +1,19 @@
 import { useState } from 'react';
 
 /** Login Form
- * 
+ *
  * Props:
  *  -loginUser (cb function from parent)
- * 
+ *
  * State:
  *  -formData
- * 
+ *
  * RouteList --> LoginForm
  */
 
 function LoginForm ({loginUser}) {
-    const [formData, setFormData] = useState({username: '', password: ''});
+    const initialData = {username: '', password: ''};
+    const [formData, setFormData] = useState(initialData);
 
     /** Update local state w/curr state of input elem */
 
@@ -28,14 +29,15 @@ function LoginForm ({loginUser}) {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        handleGetStory(formData);
+        loginUser(formData);
+        setFormData(initialData);
     }
 
     return (
         <form className='LoginForm' onSubmit={handleSubmit}>
             <div className='form-group'>
                 <label htmlFor='LoginForm-username'>Username</label>
-                <input 
+                <input
                     className='form-control'
                     id='LoginForm-username'
                     name='username'
@@ -45,7 +47,7 @@ function LoginForm ({loginUser}) {
             </div>
             <div className='form-group'>
                 <label htmlFor='LoginForm-password'>Password</label>
-                <input 
+                <input
                     className='form-control'
                     id='LoginForm-password'
                     name='password'
