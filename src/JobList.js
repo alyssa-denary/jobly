@@ -14,17 +14,52 @@
 *
 */
 
+import { useEffect, useState } from "react";
 import JobCardList from "./JobCardList";
 import SearchForm from "./SearchForm";
+import JoblyApi from "./api";
 
 function JobList() {
+  const initialJobsData = {
+    isLoading: true,
+    data: null,
+    errors: null
+  }
+  const [jobs, setJobs] = useState(initialJobsData);
+  const [filterText, setFilterText] = useState("");
 
-  const fakeJobs = [{fakejob: null}];
+  useEffect(function fetchJobsOnFilterTextChange() {
+    async function fetchJobs() {
+        try {
+        const jobsResult = await JoblyApi.getJobs(filterText);
+        setJobs({
+            isLoading: false,
+            data: jobsResult,
+            errors: null
+        });
+        } catch (err) {
+            setJobs({
+                isLoading: false,
+                data: null,
+                errors: err
+            });
+        }
+    }
+    fetchJobs();
+}, [filterText]);
+
+function filter(data) {
+  if (filterText !== data.searchText) {
+  setFilterText(data.searchText);
+  }
+}
 
     return (
       <div className="JobList">
-        <SearchForm />
-        <JobCardList jobs={fakeJobs} />
+        <SearchForm filter={filter}/>
+        {jobs.isLoading && <p>Loading...</p>}
+        {jobs.errors !== null && <p>Not Found!</p>}
+        {jobs.data !==null && <JobCardList jobs={jobs.data} />}
       </div>
     );
 }
