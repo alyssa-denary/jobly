@@ -19,12 +19,12 @@ function RouteList({ user, loginUser, signUpUser, updateProfile }) {
 
   return (
     <Routes>
+      <Route
+        path="/"
+        element={<Homepage />}
+      />
       {user.username === null &&
         <div>
-          <Route
-            path="/"
-            element={<Homepage />}
-          />
 
           <Route
             path="/login"
