@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 /** SearchForm
 *
@@ -11,8 +11,8 @@ import {useState} from "react";
 * {CompanyList,  JobList} --> SearchForm
 */
 
-function SearchForm({filter}) {
-  const [formData, setFormData] = useState({searchText: ""});
+function SearchForm({ filter }) {
+  const [formData, setFormData] = useState({ searchText: "" });
 
   /** handleSubmit calls parent filter callback */
   function handleSubmit(evt) {
@@ -32,15 +32,15 @@ function SearchForm({filter}) {
   return (
     <form className="SearchForm" onSubmit={handleSubmit}>
       <div className="form-group">
-      <label htmlFor="SearchForm-input"></label>
-      <input
-        id="SearchForm-input"
-        className="form-control"
-        placeholder="Enter search term..."
-        name="searchText"
-        value={formData.searchText}
-        onChange={handleChange}
-      />
+        <label htmlFor="SearchForm-input"></label>
+        <input
+          id="SearchForm-input"
+          className="form-control"
+          placeholder="Enter search term..."
+          name="searchText"
+          value={formData.searchText}
+          onChange={handleChange}
+        />
       </div>
       <button className="btn btn-lg btn-primary" type="submit">Submit</button>
     </form>

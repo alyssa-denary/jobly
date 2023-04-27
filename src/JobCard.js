@@ -11,7 +11,7 @@ import "./JobCard.css";
  * JobCardList --> JobCard
  */
 
-function JobCard({ job }){
+function JobCard({ job }) {
   return (
     <div className="JobCard card card-body">
       <h4 className="card-title">{job.title}</h4>
