@@ -26,20 +26,20 @@ function JobList() {
     data: null,
     errors: null
   };
-  const [jobs, setJobs] = useState(initialJobsData);
+  const [jobsApiData, setJobsApiData] = useState(initialJobsData);
   const [filterText, setFilterText] = useState("");
 
   useEffect(function fetchJobsOnFilterTextChange() {
     async function fetchJobs() {
       try {
         const jobsResult = await JoblyApi.getJobs(filterText);
-        setJobs({
+        setJobsApiData({
           isLoading: false,
           data: jobsResult,
           errors: null
         });
       } catch (err) {
-        setJobs({
+        setJobsApiData({
           isLoading: false,
           data: null,
           errors: err
@@ -56,9 +56,10 @@ function JobList() {
   return (
     <div className="JobList col-md-8 offset-md-2">
       <SearchForm filter={filter} />
-      {jobs.isLoading && <p>Loading...</p>}
-      {jobs.errors !== null && <p>Not Found!</p>}
-      {jobs.data !== null && <JobCardList jobs={jobs.data} />}
+      {jobsApiData.isLoading && <p>Loading...</p>}
+      {(jobsApiData.errors !== null || jobsApiData.data?.length === 0)
+        && <p>Not Found!</p>}
+      {jobsApiData.data !== null && <JobCardList jobs={jobsApiData.data} />}
     </div>
   );
 }
