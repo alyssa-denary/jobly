@@ -23,22 +23,28 @@ function App() {
   console.debug("token", token);
 
   async function loginUser(username, password) {
-    try {
-      const resToken = await JoblyApi.login(username, password);
-      setToken(resToken);
-      const userResult = await JoblyApi.getUser(username, resToken);
-      setUser(userResult);
-    } catch (err) {
-      console.log('err: ', err);
-    }
+    // try {
+    const resToken = await JoblyApi.login(username, password);
+    setToken(resToken);
+
+    const resUser = await JoblyApi.getUser(username, resToken);
+    setUser(userResult);
+    // } catch (err) {
+    //   console.log('err: ', err);
+    // }
   }
 
   async function signUpUser(username, password, firstName, lastName, email) {
     try {
-      const resToken = await JoblyApi.registerUser(username, password, firstName, lastName, email);
+      const resToken = await JoblyApi.registerUser(
+        username,
+        password,
+        firstName,
+        lastName,
+        email);
       setToken(resToken);
       const userResult = await JoblyApi.getUser(username, resToken);
-      setUser(userResult);
+      setUser(resUser);
     } catch (err) {
       console.log('err: ', err);
     }
