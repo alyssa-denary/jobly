@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './Navigation.css';
+import { useContext } from "react";
+import userContext from "./userContext";
 
 /** Navigation Bar
  *
@@ -9,7 +11,9 @@ import './Navigation.css';
  *
  * App --> NavLink
  */
-function Navigation({user}) {
+function Navigation() {
+  const user = useContext(userContext);
+
   return (
     <nav className='Navigation navbar navbar-expand-md'>
       <div className='container-fluid'>
@@ -29,7 +33,7 @@ function Navigation({user}) {
             </NavLink>
           </li>
         </ul>}
-        {user.username !== null && 
+        {user.username !== null &&
         <ul className='navbar-nav ms-auto'>
           <li>
             <NavLink to={'/companies'} className={'nav-item me-4'}>
