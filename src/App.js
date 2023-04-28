@@ -8,7 +8,9 @@ import { Navigate } from 'react-router-dom';
 
 /** App
  *
- * State: none
+ * State:
+ * - user
+ * - token
  *
  * props: none
  *

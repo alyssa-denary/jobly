@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Alert from '../Alert';
 
 /** SignUpForm
  *
@@ -20,6 +21,7 @@ function SignUpForm({ signUpUser }) {
     email: ''
   };
   const [formData, setFormData] = useState(initialData);
+  const [errors, setErrors] = useState(null);
 
   /** Update local state w/curr state of input elem */
 
@@ -31,22 +33,27 @@ function SignUpForm({ signUpUser }) {
     }));
   }
 
-  /** Call parent function and clear form */
+  /** Call parent function */
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signUpUser(
-      formData.username,
-      formData.password,
-      formData.firstName,
-      formData.lastName,
-      formData.email
-    );
-    setFormData(initialData);
+    try {
+      await signUpUser(
+        formData.username,
+        formData.password,
+        formData.firstName,
+        formData.lastName,
+        formData.email
+      );
+    } catch (errs) {
+      setErrors(errs);
+    }
   }
 
   return (
-    <form className='SignUpForm' onSubmit={handleSubmit}>
+    <div className="SignUpForm">
+      {errors !== null && <Alert messages={errors} type="danger" />}
+    <form className='SignUpForm-form' onSubmit={handleSubmit}>
       <div className='form-group'>
         <label htmlFor='SignUpForm-username'>Username</label>
         <input
@@ -99,6 +106,7 @@ function SignUpForm({ signUpUser }) {
       </div>
       <button className='btn btn-primary'>Submit</button>
     </form>
+    </div>
   );
 
 }
