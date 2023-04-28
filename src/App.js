@@ -16,12 +16,13 @@ import JoblyApi from './api';
  */
 
 function App() {
-  const [user, setUser] = useState({ username: "Namely", firstName: "Bob" });
+  const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
+  console.debug("user", user);
+  console.debug("token", token);
+
   async function loginUser(username, password) {
-    // hold on to username
-    // try/catch call api function --> get token
     try {
       const resToken = await JoblyApi.login(username, password);
       setToken(resToken);
@@ -34,20 +35,24 @@ function App() {
   useEffect(function fetchUserOnToken() {
     async function fetchUser() {
       try {
-        const userResult = await JoblyApi.getUser(user?.username);
+        const userResult = await JoblyApi.getUser(user.username, token);
         setUser(userResult);
       } catch (err) {
         console.log('err: ', err);
       }
     }
-    if (user !== null) fetchUser();
+    if (user !== null) {
+      fetchUser();
+    }
   }, [token]);
 
   async function signUpUser(username, password, firstName, lastName, email) {
     try {
       const resToken = await JoblyApi.registerUser(username, password, firstName, lastName, email);
       setToken(resToken);
-      setUser({ username });
+      setUser(
+        { username }
+      );
     } catch (err) {
       console.log('err: ', err)
     }
@@ -60,6 +65,7 @@ function App() {
 
   function logoutUser() {
     setUser(null);
+    setToken(null);
   }
 
   return (
