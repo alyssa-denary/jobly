@@ -11,7 +11,7 @@ import userContext from "./userContext";
  *
  * App --> NavLink
  */
-function Navigation() {
+function Navigation({ logout }) {
   const user = useContext(userContext);
 
   return (
@@ -51,7 +51,7 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to={'/logout'} className={'nav-item me-4'}>
+            <NavLink to={'/'} onClick={logout} className={'nav-item me-4'}>
               Log out ${user.username}
             </NavLink>
           </li>
