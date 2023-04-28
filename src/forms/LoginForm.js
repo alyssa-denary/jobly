@@ -14,7 +14,7 @@ import { useState } from 'react';
 function LoginForm({ loginUser }) {
   const initialData = { username: '', password: '' };
   const [formData, setFormData] = useState(initialData);
-
+  const [errors, setErrors] = useState(null);
   /** Update local state w/curr state of input elem */
 
   function handleChange(evt) {
@@ -27,12 +27,18 @@ function LoginForm({ loginUser }) {
 
   /** Call parent function and clear form */
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    loginUser(formData.username, formData.password);
-    setFormData(initialData);
+    try {
+      await loginUser(formData.username, formData.password);
+    } catch(err) {
+      console.error(err);
+      setErrors(err);
+    }
   }
-
+ 
+  //TODO: handle error messages
+  
   return (
     <form className='LoginForm' onSubmit={handleSubmit}>
       <div className='form-group'>
