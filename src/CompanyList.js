@@ -70,9 +70,11 @@ function CompanyList() {
       {companies.isLoading && <p>Loading...</p>}
       {/* TODO: Add empty array to not found conditional */}
       {companies.errors !== null && <p>Not Found!</p>}
-      {companies.data !== null && companies.data.map((c) => (
-        <CompanyCard company={c} key={c.handle} />
-      ))}
+      <div className="CompanyList-list">
+        {companies.data !== null && companies.data.map((c) => (
+          <CompanyCard company={c} key={c.handle} />
+        ))}
+      </div>
     </div>
   );
 }
