@@ -55,7 +55,7 @@ function JobList() {
   }
 
   return (
-    <div className="JobList">
+    <div className="JobList col-md-8 offset-md-2">
       <SearchForm filter={filter} />
       {jobs.isLoading && <p>Loading...</p>}
       {jobs.errors !== null && <p>Not Found!</p>}
