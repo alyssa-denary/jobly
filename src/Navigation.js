@@ -22,36 +22,36 @@ function Navigation({ logout }) {
         </NavLink>
         {user?.username === null &&
           <ul className='navbar-nav ms-auto'>
-          <li>
-            <NavLink to={'/login'} className={'nav-item me-4'}>
+          <li className='nav-item me-4'>
+            <NavLink to={'/login'} className='nav-link'>
               Login
             </NavLink>
           </li>
-          <li>
-            <NavLink to={'/signup'} className={'nav-item me-4'}>
+          <li  className='nav-item me-4'>
+            <NavLink to={'/signup'} className='nav-link'>
               Sign Up
             </NavLink>
           </li>
         </ul>}
         {user?.username !== null &&
         <ul className='navbar-nav ms-auto'>
-          <li>
-            <NavLink to={'/companies'} className={'nav-item me-4'}>
+          <li  className='nav-item me-4'>
+            <NavLink to={'/companies'} className='nav-link'>
               Companies
             </NavLink>
           </li>
-          <li>
-            <NavLink to={'/jobs'} className={'nav-item me-4'}>
+          <li  className='nav-item me-4'>
+            <NavLink to={'/jobs'} className='nav-link'>
               Jobs
             </NavLink>
           </li>
-          <li>
-            <NavLink to={'/profile'} className={'nav-item me-4'}>
+          <li className='nav-item me-4'>
+            <NavLink to={'/profile'} className='nav-link'>
               updateProfile
             </NavLink>
           </li>
-          <li>
-            <NavLink to={'/'} onClick={logout} className={'nav-item me-4'}>
+          <li className='nav-item'>
+            <NavLink to={'/'} onClick={logout} className='nav-link'>
               Log out {user?.username}
             </NavLink>
           </li>
