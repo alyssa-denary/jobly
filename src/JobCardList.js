@@ -5,19 +5,23 @@ import JobCard from "./JobCard";
  * maps over array of jobs and renders JobCard for each
  *
  * Props:
- * - jobs: [{id, title, salary, equity, (companyHandle), (companyName)}...]
+ * - jobs: [{ title, salary, equity, companyName}...]
  *
  * State none
  *
  * { JobsList, CompanyDetail } --> JobCardList --> JobCard
 */
 
-// TODO: destructure here instead of in jobCard
 function JobCardList({ jobs }) {
 
   return (
     <div className="JobCardList">
-      {jobs.map(j => <JobCard job={j} key={j.id} />)}
+      {jobs.map(j => <JobCard
+        title={j.title}
+        salary={j.salary}
+        equity={j.equity}
+        companyName={j.companyName}
+        key={j.id} />)}
     </div>
   );
 }

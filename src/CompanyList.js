@@ -27,8 +27,8 @@ function CompanyList() {
     errors: null
   };
 
-  // TODO: update name to companiesAPIdata, companiesAndLoadingAndErrors
-  const [companies, setCompanies] = useState(initialCompaniesData);
+
+  const [companiesApiData, setCompaniesApiData] = useState(initialCompaniesData);
   const [filterText, setFilterText] = useState("");
 
   /** Makes axios request to API to get companies that contain search
@@ -39,40 +39,43 @@ function CompanyList() {
     async function fetchCompanies() {
       try {
         const companiesResult = await JoblyApi.getCompanies(filterText);
-        setCompanies({
+        setCompaniesApiData({
           isLoading: false,
           data: companiesResult,
           errors: null
         });
       } catch (err) {
-        setCompanies({
+        setCompaniesApiData({
           isLoading: false,
           data: null,
           errors: err
         });
       }
     }
-    // TODO: could set isLoading to true here
     fetchCompanies();
   }, [filterText]);
 
   /** Sets filterText on search bar submit if input has changed */
 
   function filter(data) {
-    if (filterText !== data.searchText) { // TODO: don't need this line
       setFilterText(data.searchText);
-    }
+
   }
 
   return (
     <div className="CompanyList col-md-8 offset-md-2">
       <SearchForm filter={filter} />
-      {companies.isLoading && <p>Loading...</p>}
-      {/* TODO: Add empty array to not found conditional */}
-      {companies.errors !== null && <p>Not Found!</p>}
+      {companiesApiData.isLoading && <p>Loading...</p>}
+      {(companiesApiData.errors !== null || companiesApiData.data.length === 0)
+       && <p>Not Found!</p>}
       <div className="CompanyList-list">
-        {companies.data !== null && companies.data.map((c) => (
-          <CompanyCard company={c} key={c.handle} />
+        {companiesApiData.data !== null && companiesApiData.data.map((c) => (
+          <CompanyCard 
+            name={c.name} 
+            handle={c.handle} 
+            description={c.description} 
+            logoUrl={c.logoUrl} 
+            key={c.handle} />
         ))}
       </div>
     </div>

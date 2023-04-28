@@ -24,21 +24,20 @@ function CompanyDetail() {
     errors: null
   };
   const { handle } = useParams();
-  // TODO: keep same pattern from CompanyList naming, but rename to companyAPI, etc.
-  const [company, setCompany] = useState(initialCompanyData);
+  const [companyApiData, setCompanyApiData] = useState(initialCompanyData);
 
   /** fetches company info on handle provided by params */
   useEffect(function fetchCompanyWhenMounted() {
     async function fetchCompany() {
       try {
         const companyResult = await JoblyApi.getCompany(handle);
-        setCompany({
+        setCompanyApiData({
           isLoading: false,
           data: companyResult,
           errors: null
         });
       } catch (err) {
-        setCompany({
+        setCompanyApiData({
           isLoading: false,
           data: null,
           errors: err
@@ -53,13 +52,13 @@ function CompanyDetail() {
 
   return (
     <div className="CompanyDetail">
-      {company.isLoading && <p>Loading...</p>}
-      {company.errors !== null && <Navigate to="/companies" />}
-      {company.data !== null &&
+      {companyApiData.isLoading && <p>Loading...</p>}
+      {companyApiData.errors !== null && <Navigate to="/companies" />}
+      {companyApiData.data !== null &&
         <div>
-          <h2>{company.data.name}</h2>
-          <p>{company.data.description}</p>
-          <JobCardList jobs={company.data.jobs} />
+          <h2>{companyApiData.data.name}</h2>
+          <p>{companyApiData.data.description}</p>
+          <JobCardList jobs={companyApiData.data.jobs} />
         </div>
       }
     </div>

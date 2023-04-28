@@ -44,7 +44,7 @@ function App() {
     if (user !== null) {
       fetchUser();
     }
-  }, [token, user]);
+  }, [token]);
 
   async function signUpUser(username, password, firstName, lastName, email) {
     try {

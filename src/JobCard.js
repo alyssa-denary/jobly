@@ -3,7 +3,7 @@ import "./JobCard.css";
 /** JobCard
  *
  * Props:
- * - job {id, title, salary, equity, (companyHandle), (companyName)}
+ * - job {title, salary, equity, companyName}
  * () = optional
  *
  * State none
@@ -11,13 +11,13 @@ import "./JobCard.css";
  * JobCardList --> JobCard
  */
 
-function JobCard({ job }) {
+function JobCard({ title, salary, equity, companyName }) {
   return (
     <div className="JobCard card card-body">
-      <h4 className="card-title">{job.title}</h4>
-      {job.companyName !== undefined && <p>{job.companyName}</p>}
-      {job.salary !== undefined && <p><small>Salary: {job.salary}</small></p>}
-      <p><small>Equity: {job?.equity || 0}</small></p>
+      <h4 className="card-title">{title}</h4>
+      {companyName !== undefined && <p>{companyName}</p>}
+      {salary !== undefined && <p><small>Salary: {salary}</small></p>}
+      <p><small>Equity: {equity || 0}</small></p>
     </div>
   );
 }

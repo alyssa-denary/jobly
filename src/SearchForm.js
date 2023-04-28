@@ -19,7 +19,6 @@ function SearchForm({ filter }) {
   /** handleSubmit calls parent filter callback */
   function handleSubmit(evt) {
     evt.preventDefault();
-    // TODO: could clean up data here with trim() for empty entries
     filter(formData);
   }
 
@@ -28,7 +27,7 @@ function SearchForm({ filter }) {
     const { name, value } = evt.target;
     setFormData(curr => ({
       ...curr,
-      [name]: value
+      [name]: value.trim()
     }));
   }
 
