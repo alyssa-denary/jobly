@@ -70,6 +70,14 @@ class JoblyApi {
     return res.jobs;
   }
 
+    /** Get a list of jobs filtered by search bar input */
+
+    static async login(username, password) {
+      const data = {username: username, password: password};
+      const  res = await this.request('/auth/token', data, "POST");
+
+      return res.token;
+    }
 
 }
 
