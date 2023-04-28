@@ -43,7 +43,15 @@ function App() {
     if (user !== null) fetchUser();
   }, [token]);
 
-  function signUpUser() { }
+  async function signUpUser(username, password, firstName, lastName, email) {
+    try {
+      const resToken = await JoblyApi.registerUser(username, password, firstName, lastName, email);
+      setToken(resToken);
+      setUser({ username });
+    } catch (err) {
+      console.log('err: ', err)
+    }
+  }
 
   function updateProfile(data) {
     // calling api function
