@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useContext } from './userContext';
+import { useState, useContext } from 'react';
+import userContext from './userContext';
 
 /** ProfileForm
  *
@@ -12,16 +12,10 @@ import { useContext } from './userContext';
  * RouteList --> ProfileForm
  */
 
-function ProfileForm({ updateProfile, username, firstName, lastName, email }) {
+function ProfileForm({ updateProfile }) {
+  const user = useContext(userContext);
 
-  const userData = {
-    username: username,
-    firstName: firstName,
-    lastName: lastName,
-    email: email
-  };
-
-  const [formData, setFormData] = useState(userData);
+  const [formData, setFormData] = useState(user);
 
   /** Update local state w/curr state of input elem */
 
