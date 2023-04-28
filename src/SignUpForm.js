@@ -24,7 +24,7 @@ function SignUpForm({ signUpUser }) {
   /** Update local state w/curr state of input elem */
 
   function handleChange(evt) {
-    const { name, value } = evt.targetj;
+    const { name, value } = evt.target;
     setFormData(fData => ({
       ...fData,
       [name]: value,
@@ -35,7 +35,13 @@ function SignUpForm({ signUpUser }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    signUpUser(formData);
+    signUpUser(
+      formData.username,
+      formData.password,
+      formData.firstName,
+      formData.lastName,
+      formData.email
+    );
     setFormData(initialData);
   }
 
