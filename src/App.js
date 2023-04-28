@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import { BrowserRouter } from 'react-router-dom';
 import userContext from "./userContext";
 import { useState } from 'react';
+import JoblyApi from './api';
 
 /** App
  *
@@ -20,8 +21,8 @@ function App() {
 
   function loginUser(){
     // hold on to username
-    // call api function --> get token
-    // if token then username is valid, call 2nd api function
+    // try/catch call api function --> get token
+    // if token then username is valid, try/catch call 2nd api function
     // . . to GET /[username] to get all user info
     // {username, firstName, lastName, isAdmin, jobs}
     // setUser with that info
