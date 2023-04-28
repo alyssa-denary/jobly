@@ -1,10 +1,10 @@
 import './App.css';
 import RouteList from './RouteList';
 import Navigation from './Navigation';
-import { BrowserRouter } from 'react-router-dom';
 import userContext from "./userContext";
 import { useState, useEffect } from 'react';
 import JoblyApi from './api';
+import { Navigate } from 'react-router-dom';
 
 /** App
  *
@@ -26,35 +26,21 @@ function App() {
     try {
       const resToken = await JoblyApi.login(username, password);
       setToken(resToken);
-      setUser({ username });
+      const userResult = await JoblyApi.getUser(username, token);
+      setUser(userResult);
     } catch (err) {
       console.log('err: ', err);
     }
   }
 
-  useEffect(function fetchUserOnToken() {
-    async function fetchUser() {
-      try {
-        const userResult = await JoblyApi.getUser(user.username, token);
-        setUser(userResult);
-      } catch (err) {
-        console.log('err: ', err);
-      }
-    }
-    if (user !== null) {
-      fetchUser();
-    }
-  }, [token]);
-
   async function signUpUser(username, password, firstName, lastName, email) {
     try {
       const resToken = await JoblyApi.registerUser(username, password, firstName, lastName, email);
       setToken(resToken);
-      setUser(
-        { username }
-      );
+      const userResult = await JoblyApi.getUser(username, token);
+      setUser(userResult);
     } catch (err) {
-      console.log('err: ', err)
+      console.log('err: ', err);
     }
   }
 
@@ -66,19 +52,18 @@ function App() {
   function logoutUser() {
     setUser(null);
     setToken(null);
+    <Navigate to="/" />;
   }
 
   return (
     <div className="App">
       <userContext.Provider value={user}>
-        <BrowserRouter>
-          <Navigation logout={logoutUser} />
-          <RouteList
-            loginUser={loginUser}
-            signUpUser={signUpUser}
-            updateProfile={updateProfile}
-          />
-        </BrowserRouter>
+        <Navigation logout={logoutUser} />
+        <RouteList
+          loginUser={loginUser}
+          signUpUser={signUpUser}
+          updateProfile={updateProfile}
+        />
       </userContext.Provider>
     </div>
   );
