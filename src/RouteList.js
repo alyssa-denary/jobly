@@ -28,7 +28,7 @@ function RouteList({ loginUser, signUpUser, updateProfile }) {
         path="/"
         element={<Homepage />}
       />
-      {user?.username === null &&
+      {user === null &&
         <>
 
           <Route
@@ -42,7 +42,7 @@ function RouteList({ loginUser, signUpUser, updateProfile }) {
           />
         </>
       }
-      {user?.username !== null &&
+      {user !== null &&
         <>
           <Route
             path="/profile"
