@@ -27,7 +27,7 @@ function SearchForm({ filter }) {
     const { name, value } = evt.target;
     setFormData(curr => ({
       ...curr,
-      [name]: value.trim()
+      [name]: value
     }));
   }
 

@@ -38,7 +38,7 @@ function RouteList({ loginUser, signUpUser, updateProfile }) {
 
           <Route
             path="/signup"
-            element={<SignUpForm signUpUser={signUpUser}/>}
+            element={<SignUpForm signUpUser={signUpUser} />}
           />
         </>
       }
@@ -63,13 +63,12 @@ function RouteList({ loginUser, signUpUser, updateProfile }) {
             path="/jobs"
             element={< JobList />}
           />
-
-          < Route
-            path="/*"
-            element={< Navigate to="/" />}
-          />
         </>
       }
+      < Route
+        path="/*"
+        element={< Navigate to="/" />}
+      />
     </Routes >
   );
 }

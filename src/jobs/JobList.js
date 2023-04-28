@@ -50,7 +50,7 @@ function JobList() {
   }, [filterText]);
 
   function filter(data) {
-    setFilterText(data.searchText);
+    setFilterText(data.searchText.trim());
   }
 
   return (

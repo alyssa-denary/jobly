@@ -58,15 +58,14 @@ function CompanyList() {
   /** Sets filterText on search bar submit if input has changed */
 
   function filter(data) {
-    setFilterText(data.searchText);
-
+    setFilterText(data.searchText.trim());
   }
 
   return (
     <div className="CompanyList col-md-8 offset-md-2">
       <SearchForm filter={filter} />
       {companiesApiData.isLoading && <p>Loading...</p>}
-      {(companiesApiData.errors !== null || companiesApiData.data.length === 0)
+      {(companiesApiData.errors !== null || companiesApiData.data?.length === 0)
         && <p>Not Found!</p>}
       <div className="CompanyList-list">
         {companiesApiData.data !== null && companiesApiData.data.map((c) => (

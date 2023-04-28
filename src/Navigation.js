@@ -47,7 +47,7 @@ function Navigation({ logout }) {
             </li>
             <li className='nav-item me-4'>
               <NavLink to={'/profile'} className='nav-link'>
-                updateProfile
+                Profile
               </NavLink>
             </li>
             <li className='nav-item'>

@@ -29,17 +29,17 @@ function Homepage() {
       <h2>Jobly</h2>
       <p>All the jobs in one, convenient place.</p>
       {user === null &&
-        <div>
-          <button className="btn btn-primary" onClick={navigateLogIn}>
+        <div className="d-flex justify-content-center">
+          <button className="btn btn-primary me-3" onClick={navigateLogIn}>
             Log in
           </button>
           <button className="btn btn-primary" onClick={navigateSignUp}>
             Sign up
           </button>
         </div>}
-      {user?.firstName &
+      {user !== null &&
         <div>
-          <h2>Welcome Back, {user?.firstName}!</h2>
+          <h2>Welcome Back, {user.firstName}!</h2>
         </div>
       }
     </div>

@@ -26,7 +26,7 @@ function App() {
     try {
       const resToken = await JoblyApi.login(username, password);
       setToken(resToken);
-      const userResult = await JoblyApi.getUser(username, token);
+      const userResult = await JoblyApi.getUser(username, resToken);
       setUser(userResult);
     } catch (err) {
       console.log('err: ', err);
@@ -37,7 +37,7 @@ function App() {
     try {
       const resToken = await JoblyApi.registerUser(username, password, firstName, lastName, email);
       setToken(resToken);
-      const userResult = await JoblyApi.getUser(username, token);
+      const userResult = await JoblyApi.getUser(username, resToken);
       setUser(userResult);
     } catch (err) {
       console.log('err: ', err);
