@@ -4,7 +4,7 @@
 *
 * State
 * -jobs {isLoading, data, errors}
-* -filterText  : "anderson" 
+* -filterText  : "anderson"
 *
 * Effect:
 * -fetchJobs
@@ -49,7 +49,7 @@ function JobList() {
   }, [filterText]);
 
   function filter(data) {
-      setFilterText(data.searchText);
+    setFilterText(data.searchText);
   }
 
   return (

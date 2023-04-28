@@ -1,5 +1,5 @@
 import JobCardList from "./JobCardList";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import JoblyApi from "./api";
 
@@ -45,7 +45,7 @@ function CompanyDetail() {
       }
     }
     fetchCompany();
-  }, [ ]);
+  }, []);
   // TODO: add handle to watch list above. Whenever referencing params/state
   // likely should have in dependency, then use conditional logic on line 47 to
   // only run fetchCompany if (some condition) is met.

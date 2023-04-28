@@ -22,40 +22,40 @@ function Navigation({ logout }) {
         </NavLink>
         {user === null &&
           <ul className='navbar-nav ms-auto'>
-          <li className='nav-item me-4'>
-            <NavLink to={'/login'} className='nav-link'>
-              Login
-            </NavLink>
-          </li>
-          <li  className='nav-item me-4'>
-            <NavLink to={'/signup'} className='nav-link'>
-              Sign Up
-            </NavLink>
-          </li>
-        </ul>}
+            <li className='nav-item me-4'>
+              <NavLink to={'/login'} className='nav-link'>
+                Login
+              </NavLink>
+            </li>
+            <li className='nav-item me-4'>
+              <NavLink to={'/signup'} className='nav-link'>
+                Sign Up
+              </NavLink>
+            </li>
+          </ul>}
         {user !== null &&
-        <ul className='navbar-nav ms-auto'>
-          <li  className='nav-item me-4'>
-            <NavLink to={'/companies'} className='nav-link'>
-              Companies
-            </NavLink>
-          </li>
-          <li  className='nav-item me-4'>
-            <NavLink to={'/jobs'} className='nav-link'>
-              Jobs
-            </NavLink>
-          </li>
-          <li className='nav-item me-4'>
-            <NavLink to={'/profile'} className='nav-link'>
-              updateProfile
-            </NavLink>
-          </li>
-          <li className='nav-item'>
-            <NavLink to={'/'} onClick={logout} className='nav-link'>
-              Log out {user.username}
-            </NavLink>
-          </li>
-        </ul>}
+          <ul className='navbar-nav ms-auto'>
+            <li className='nav-item me-4'>
+              <NavLink to={'/companies'} className='nav-link'>
+                Companies
+              </NavLink>
+            </li>
+            <li className='nav-item me-4'>
+              <NavLink to={'/jobs'} className='nav-link'>
+                Jobs
+              </NavLink>
+            </li>
+            <li className='nav-item me-4'>
+              <NavLink to={'/profile'} className='nav-link'>
+                updateProfile
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink onClick={logout} className='nav-link'>
+                Log out {user.username}
+              </NavLink>
+            </li>
+          </ul>}
       </div>
     </nav >
   );

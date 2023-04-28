@@ -58,7 +58,7 @@ function CompanyList() {
   /** Sets filterText on search bar submit if input has changed */
 
   function filter(data) {
-      setFilterText(data.searchText);
+    setFilterText(data.searchText);
 
   }
 
@@ -67,14 +67,14 @@ function CompanyList() {
       <SearchForm filter={filter} />
       {companiesApiData.isLoading && <p>Loading...</p>}
       {(companiesApiData.errors !== null || companiesApiData.data.length === 0)
-       && <p>Not Found!</p>}
+        && <p>Not Found!</p>}
       <div className="CompanyList-list">
         {companiesApiData.data !== null && companiesApiData.data.map((c) => (
-          <CompanyCard 
-            name={c.name} 
-            handle={c.handle} 
-            description={c.description} 
-            logoUrl={c.logoUrl} 
+          <CompanyCard
+            name={c.name}
+            handle={c.handle}
+            description={c.description}
+            logoUrl={c.logoUrl}
             key={c.handle} />
         ))}
       </div>
