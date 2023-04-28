@@ -28,14 +28,14 @@ function App() {
     setToken(resToken);
 
     const resUser = await JoblyApi.getUser(username, resToken);
-    setUser(userResult);
+    setUser(resUser);
     // } catch (err) {
     //   console.log('err: ', err);
     // }
   }
 
   async function signUpUser(username, password, firstName, lastName, email) {
-    try {
+    // try {
       const resToken = await JoblyApi.registerUser(
         username,
         password,
@@ -43,11 +43,11 @@ function App() {
         lastName,
         email);
       setToken(resToken);
-      const userResult = await JoblyApi.getUser(username, resToken);
+      const resUser = await JoblyApi.getUser(username, resToken);
       setUser(resUser);
-    } catch (err) {
-      console.log('err: ', err);
-    }
+    // } catch (err) {
+    //   console.log('err: ', err);
+    // }
   }
 
   function updateProfile(data) {

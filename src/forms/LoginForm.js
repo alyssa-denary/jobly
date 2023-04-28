@@ -1,3 +1,4 @@
+import Alert from '../Alert.js';
 import { useState } from 'react';
 
 /** Login Form
@@ -31,38 +32,41 @@ function LoginForm({ loginUser }) {
     evt.preventDefault();
     try {
       await loginUser(formData.username, formData.password);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       setErrors(err);
     }
   }
- 
+
   //TODO: handle error messages
-  
+
   return (
-    <form className='LoginForm' onSubmit={handleSubmit}>
-      <div className='form-group'>
-        <label htmlFor='LoginForm-username'>Username</label>
-        <input
-          className='form-control'
-          id='LoginForm-username'
-          name='username'
-          onChange={handleChange}
-          value={formData.username}
-        />
-      </div>
-      <div className='form-group'>
-        <label htmlFor='LoginForm-password'>Password</label>
-        <input
-          className='form-control'
-          id='LoginForm-password'
-          name='password'
-          onChange={handleChange}
-          value={formData.password}
-        />
-      </div>
-      <button className='btn btn-primary'>Submit</button>
-    </form>
+    <div className='LoginForm'>
+      {errors !== null && <Alert messages={errors} type="danger" />}
+      <form className='LoginForm-form' onSubmit={handleSubmit}>
+        <div className='form-group'>
+          <label htmlFor='LoginForm-username'>Username</label>
+          <input
+            className='form-control'
+            id='LoginForm-username'
+            name='username'
+            onChange={handleChange}
+            value={formData.username}
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='LoginForm-password'>Password</label>
+          <input
+            className='form-control'
+            id='LoginForm-password'
+            name='password'
+            onChange={handleChange}
+            value={formData.password}
+          />
+        </div>
+        <button className='btn btn-primary'>Submit</button>
+      </form>
+    </div>
   );
 
 }
