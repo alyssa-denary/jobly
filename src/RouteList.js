@@ -1,10 +1,13 @@
 import { Routes, Route, Navigate, Switch } from 'react-router-dom';
+import { useContext } from 'react';
+import userContext from './userContext';
 import CompanyList from './CompanyList';
 import JobList from './JobList';
 import CompanyDetail from './CompanyDetail';
 import Homepage from './Homepage';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+import ProfileForm from './ProfileForm';
 
 
 /** Route list
@@ -16,7 +19,8 @@ import LoginForm from './LoginForm';
  * App --> RouteList --> { Homepage, CompanyList, CompanyDetail, JobList}
  */
 
-function RouteList({ user, loginUser, signUpUser, updateProfile }) {
+function RouteList({ loginUser, signUpUser, updateProfile }) {
+  const user = useContext(userContext);
 
   return (
     <Routes>
@@ -29,17 +33,22 @@ function RouteList({ user, loginUser, signUpUser, updateProfile }) {
 
           <Route
             path="/login"
-            element={<LoginForm />}
+            element={<LoginForm loginUser={loginUser} />}
           />
 
           <Route
             path="/signup"
-            element={<SignUpForm />}
+            element={<SignUpForm signUpUser={signUpUser}/>}
           />
         </>
       }
       {user?.username !== null &&
         <>
+          <Route
+            path="/profile"
+            element={<ProfileForm updateProfile={updateProfile} />}
+          />
+
           < Route
             path="/companies"
             element={< CompanyList />}
