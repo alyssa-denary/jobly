@@ -52,7 +52,7 @@ function Navigation({ logout }) {
           </li>
           <li className='nav-item'>
             <NavLink to={'/'} onClick={logout} className='nav-link'>
-              Log out {user?.username}
+              Log out {user.username}
             </NavLink>
           </li>
         </ul>}
