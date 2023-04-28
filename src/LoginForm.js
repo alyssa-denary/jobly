@@ -29,7 +29,7 @@ function LoginForm({ loginUser }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    loginUser(formData);
+    loginUser(formData.username, formData.password);
     setFormData(initialData);
   }
 
