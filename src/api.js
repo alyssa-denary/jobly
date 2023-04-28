@@ -65,25 +65,39 @@ class JoblyApi {
   static async getJobs(filter) {
     let res;
     if (filter.length > 0) {
-        res = await this.request('jobs/', { title: filter });
-      } else {
-        res = await this.request('jobs/');
-      }
+      res = await this.request('jobs/', { title: filter });
+    } else {
+      res = await this.request('jobs/');
+    }
     return res.jobs;
   }
 
-    /** Get a list of jobs filtered by search bar input */
+  /** Get a list of jobs filtered by search bar input */
 
-    static async login(username, password) {
-      const data = {username: username, password: password};
-      const  res = await this.request('/auth/token', data, "POST");
-      JoblyApi.token = res.token;
-      return res.token;
+  static async login(username, password) {
+    const data = { username: username, password: password };
+    const res = await this.request('auth/token', data, "POST");
+    JoblyApi.token = res.token;
+    console.log('res.token: ', res.token)
+    return res.token;
+  }
+
+  static async getUser(username) {
+    const res = await this.request(`/user/${username}`);
+    return res;
+  }
+
+  static async registerUser(username, password, firstName, lastName, email) {
+    const data = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
     }
-
-    static async getUser(username) {
-      const res = await this.request(`/user/${username}`);
-      return res;
+    const res = await this.request('auth/register', data, 'POST');
+    JoblyApi.token = res.token;
+    return res.token;
     }
 
 }
