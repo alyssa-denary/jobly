@@ -38,8 +38,6 @@ function LoginForm({ loginUser }) {
     }
   }
 
-  //TODO: handle error messages
-
   return (
     <div className='LoginForm'>
       {errors !== null && <Alert messages={errors} type="danger" />}
