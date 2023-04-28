@@ -20,7 +20,7 @@ function Navigation({ logout }) {
         <NavLink to={'/'} className='navbar-brand'>
           Jobly
         </NavLink>
-        {user.username === null &&
+        {user?.username === null &&
           <ul className='navbar-nav ms-auto'>
           <li>
             <NavLink to={'/login'} className={'nav-item me-4'}>
@@ -33,7 +33,7 @@ function Navigation({ logout }) {
             </NavLink>
           </li>
         </ul>}
-        {user.username !== null &&
+        {user?.username !== null &&
         <ul className='navbar-nav ms-auto'>
           <li>
             <NavLink to={'/companies'} className={'nav-item me-4'}>
@@ -52,7 +52,7 @@ function Navigation({ logout }) {
           </li>
           <li>
             <NavLink to={'/'} onClick={logout} className={'nav-item me-4'}>
-              Log out ${user.username}
+              Log out {user?.username}
             </NavLink>
           </li>
         </ul>}

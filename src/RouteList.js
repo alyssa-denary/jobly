@@ -1,10 +1,11 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Switch } from 'react-router-dom';
 import CompanyList from './CompanyList';
 import JobList from './JobList';
 import CompanyDetail from './CompanyDetail';
 import Homepage from './Homepage';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+
 
 /** Route list
  *
@@ -23,8 +24,8 @@ function RouteList({ user, loginUser, signUpUser, updateProfile }) {
         path="/"
         element={<Homepage />}
       />
-      {user.username === null &&
-        <div>
+      {user?.username === null &&
+        <>
 
           <Route
             path="/login"
@@ -35,10 +36,10 @@ function RouteList({ user, loginUser, signUpUser, updateProfile }) {
             path="/signup"
             element={<SignUpForm />}
           />
-        </div>
+        </>
       }
-      {user.username !== null &&
-        <div>
+      {user?.username !== null &&
+        <>
           < Route
             path="/companies"
             element={< CompanyList />}
@@ -58,7 +59,7 @@ function RouteList({ user, loginUser, signUpUser, updateProfile }) {
             path="/*"
             element={< Navigate to="/" />}
           />
-        </div>
+        </>
       }
     </Routes >
   );

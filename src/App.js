@@ -3,7 +3,7 @@ import RouteList from './RouteList';
 import Navigation from './Navigation';
 import { BrowserRouter } from 'react-router-dom';
 import userContext from "./userContext";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import JoblyApi from './api';
 
 /** App
@@ -16,17 +16,32 @@ import JoblyApi from './api';
  */
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({username: 'Namely'});
+  const [token, setToken] = useState(null);
 
-
-  function loginUser(){
+  async function loginUser(username, password){
     // hold on to username
     // try/catch call api function --> get token
-    // if token then username is valid, try/catch call 2nd api function
-    // . . to GET /[username] to get all user info
-    // {username, firstName, lastName, isAdmin, jobs}
-    // setUser with that info
+    try {
+      const resToken = await JoblyApi.login(username, password);
+      setToken(resToken);
+      setUser({username});
+    } catch(err) {
+      console.log('err: ' ,err);
+    }
   }
+
+  useEffect(function fetchUserOnToken() {
+    async function fetchUser () {
+      try{
+      const userResult = await JoblyApi.getUser(user?.username);
+      setUser(userResult);
+      } catch (err) {
+        console.log('err: ' ,err)
+      }
+    }
+    if (user !== null) fetchUser();
+  }, [token]);
 
   function signUpUser(){}
 
