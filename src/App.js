@@ -16,41 +16,41 @@ import JoblyApi from './api';
  */
 
 function App() {
-  const [user, setUser] = useState({username: 'Namely'});
+  const [user, setUser] = useState({ username: "Namely", firstName: "Bob" });
   const [token, setToken] = useState(null);
 
-  async function loginUser(username, password){
+  async function loginUser(username, password) {
     // hold on to username
     // try/catch call api function --> get token
     try {
       const resToken = await JoblyApi.login(username, password);
       setToken(resToken);
-      setUser({username});
-    } catch(err) {
-      console.log('err: ' ,err);
+      setUser({ username });
+    } catch (err) {
+      console.log('err: ', err);
     }
   }
 
   useEffect(function fetchUserOnToken() {
-    async function fetchUser () {
-      try{
-      const userResult = await JoblyApi.getUser(user?.username);
-      setUser(userResult);
+    async function fetchUser() {
+      try {
+        const userResult = await JoblyApi.getUser(user?.username);
+        setUser(userResult);
       } catch (err) {
-        console.log('err: ' ,err)
+        console.log('err: ', err);
       }
     }
     if (user !== null) fetchUser();
   }, [token]);
 
-  function signUpUser(){}
+  function signUpUser() { }
 
-  function profileUpdate(data){
+  function updateProfile(data) {
     // calling api function
     // setUser with response data
   }
 
-  function logoutUser(){
+  function logoutUser() {
     setUser(null);
   }
 
@@ -59,7 +59,11 @@ function App() {
       <userContext.Provider value={user}>
         <BrowserRouter>
           <Navigation logout={logoutUser} />
-          <RouteList />
+          <RouteList
+            loginUser={loginUser}
+            signUpUser={signUpUser}
+            updateProfile={updateProfile}
+          />
         </BrowserRouter>
       </userContext.Provider>
     </div>
