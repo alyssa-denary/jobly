@@ -65,7 +65,7 @@ function CompanyList() {
   }
 
   return (
-    <div className="CompanyList">
+    <div className="CompanyList col-md-8 offset-md-2">
       <SearchForm filter={filter} />
       {companies.isLoading && <p>Loading...</p>}
       {/* TODO: Add empty array to not found conditional */}
