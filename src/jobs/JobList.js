@@ -1,3 +1,8 @@
+import { useEffect, useState } from "react";
+import JobCardList from "./JobCardList";
+import SearchForm from "../forms/SearchForm";
+import JoblyApi from "../api";
+
 /** JobList
 *
 * Props none
@@ -14,10 +19,6 @@
 *
 */
 
-import { useEffect, useState } from "react";
-import JobCardList from "./JobCardList";
-import SearchForm from "./SearchForm";
-import JoblyApi from "./api";
 
 function JobList() {
   const initialJobsData = {

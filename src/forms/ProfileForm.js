@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import userContext from './userContext';
+import userContext from '../userContext';
 
 /** ProfileForm
  *
