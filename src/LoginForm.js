@@ -18,7 +18,7 @@ function LoginForm({ loginUser }) {
   /** Update local state w/curr state of input elem */
 
   function handleChange(evt) {
-    const { name, value } = evt.targetj;
+    const { name, value } = evt.target;
     setFormData(fData => ({
       ...fData,
       [name]: value,
