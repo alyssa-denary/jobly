@@ -2,7 +2,7 @@ import './App.css';
 import RouteList from './RouteList';
 import Navigation from './Navigation';
 import userContext from "./userContext";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import JoblyApi from './api';
 import { Navigate } from 'react-router-dom';
 
