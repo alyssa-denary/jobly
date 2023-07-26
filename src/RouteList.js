@@ -26,7 +26,7 @@ function RouteList({ loginUser, signUpUser, updateProfile }) {
     <Routes>
       <Route
         path="/"
-        element={<Homepage />}
+        element={<Homepage loginUser={loginUser} />}
       />
       {user === null &&
         <>
