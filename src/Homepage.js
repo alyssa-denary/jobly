@@ -2,6 +2,7 @@ import "./Homepage.css";
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import userContext from './userContext';
+import DemoButton from './DemoButton';
 
 /**  Homepage
  *
@@ -12,17 +13,18 @@ import userContext from './userContext';
  * RouteList --> Homepage
 */
 
-function Homepage() {
+function Homepage({ loginUser }) {
   const user = useContext(userContext);
-  const navigate = useNavigate();
+  
+  // const navigate = useNavigate();
 
-  function navigateLogIn() {
-    navigate("/login");
-  }
+  // function navigateLogIn() {
+  //   navigate("/login");
+  // }
 
-  function navigateSignUp() {
-    navigate("/signup");
-  }
+  // function navigateSignUp() {
+  //   navigate("/signup");
+  // }
 
   return (
     <div className="Homepage d-flex flex-column justify-content-center">
@@ -30,12 +32,7 @@ function Homepage() {
       <p>All the jobs in one, convenient place.</p>
       {user === null &&
         <div className="d-flex justify-content-center">
-          <button className="btn btn-primary me-3" onClick={navigateLogIn}>
-            Log in
-          </button>
-          <button className="btn btn-primary" onClick={navigateSignUp}>
-            Sign up
-          </button>
+          <DemoButton loginUser={loginUser}/>
         </div>}
       {user !== null &&
         <div>
