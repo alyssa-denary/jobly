@@ -28,7 +28,8 @@
 [![MIT License][license-shield]][license-url]
 
 
-<!-- TABLE OF CONTENTS -->
+<!-- 
+TABLE OF CONTENTS
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -53,7 +54,7 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
+ -->
 
 ### Built With
 <br />
