@@ -6,8 +6,6 @@
 <!-- PROJECT Demo/Bug/Feature links -->
 <div align="center">
   <p align="center">
-    <a href="https://github.com/ari-denary/jobly-frontend">View Demo</a>
-    ·
     <a href="https://github.com/ari-denary/jobly-frontend/issues">Report Bug</a>
     ·
     <a href="https://github.com/ari-denary/jobly-frontend/issues">Request Feature</a>
