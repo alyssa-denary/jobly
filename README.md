@@ -1,6 +1,7 @@
 # Jobly Frontend
 
-> (Product demo video to come!)
+> ![jobly](https://github.com/ari-denary/jobly-frontend/assets/77554154/aa33f620-5af2-4ebf-a965-81d0a5fb9693)
+
 
 <!-- PROJECT Demo/Bug/Feature links -->
 <div align="center">
