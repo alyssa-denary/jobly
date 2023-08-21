@@ -1,5 +1,7 @@
 # Jobly Frontend
 
+This is the React frontend for Jobly. Combined with an Express API at <a href="https://github.com/ari-denary/jobly-backend">jobly-backend</a> for the following app:
+
 > ![jobly](https://github.com/ari-denary/jobly-frontend/assets/77554154/aa33f620-5af2-4ebf-a965-81d0a5fb9693)
 
 
